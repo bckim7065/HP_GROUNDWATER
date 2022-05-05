@@ -1,0 +1,129 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: local('NotoKR-Thin'), local('NotoKR-Thin'), local('NotoKR-Thin');
+    src: url(./font/NotoKR-Thin/notokr-thin.eot);
+    src: url(./font/NotoKR-Thin/notokr-thin.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Thin/notokr-thin.woff) format('woff'),
+    url(./font/NotoKR-Thin/notokr-thin.otf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('NotoKR-Light'), local('NotoKR-Light'), local('NotoKR-Light');
+    src: url(./font/NotoKR-Light/notokr-light.eot);
+    src: url(./font/NotoKR-Light/notokr-light.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Light/notokr-light.woff) format('woff'),
+    url(./font/NotoKR-Light/notokr-light.otf) format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 350;
+    src: local('NotoKR-DemiLight'), local('NotoKR-DemiLight'), local('NotoKR-DemiLight');
+    src: url(./font/NotoKR-DemiLight/notokr-demilight.eot);
+    src: url(./font/NotoKR-DemiLight/notokr-demilight.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-DemiLight/notokr-demilight.woff) format('woff'),
+    url(./font/NotoKR-DemiLight/notokr-demilight.otf) format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('NotoKR-Regular'), local('NotoKR-Regular'), local('NotoKR-Regular');
+    src: url(./font/NotoKR-Regular/notokr-regular.eot);
+    src: url(./font/NotoKR-Regular/notokr-regular.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Regular/notokr-regular.woff) format('woff'),
+    url(./font/NotoKR-Regular/notokr-regular.otf) format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+   src: local('NotoKR-Medium'), local('NotoKR-Medium'), local('NotoKR-Medium');
+    src: url(./font/NotoKR-Medium/notokr-medium.eot);
+    src: url(./font/NotoKR-Medium/notokr-medium.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Medium/notokr-medium.woff) format('woff'),
+    url(./font/NotoKR-Medium/notokr-medium.otf) format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('NotoKR-Bold'), local('NotoKR-Bold'), local('NotoKR-Bold');
+    src: url(./font/NotoKR-Bold/notokr-bold.eot);
+    src: url(./font/NotoKR-Bold/notokr-bold.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Bold/notokr-bold.woff) format('woff'),
+    url(./font/NotoKR-Bold/notokr-bold.otf) format('truetype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 900;
+    src: local('NotoKR-Black'), local('NotoKR-Black'), local('NotoKR-Black');
+    src: url(./font/NotoKR-Black/notokr-black.eot);
+    src: url(./font/NotoKR-Black/notokr-black.eot?#iefix) format('embedded-opentype'),
+    url(./font/NotoKR-Black/notokr-black.woff) format('woff'),
+    url(./font/NotoKR-Black/notokr-black.otf) format('truetype');
+}
+
+body {font-family: 'Noto Sans','맑은고딕', 'Malgun Gothic', 'dotum', 'gulim'; letter-spacing: -0.5px; }
+/* Reset */
+ * {outline:0 !important;}
+html,body,h1,h2,h3,h4,h5,h6,div,p,blockquote,pre,code,address,ul,ol,li,menu,nav,section,article,aside,
+dl,dt,dd,table,thead,tbody,tfoot,label,caption,th,td,form,fieldset,legend,hr,input,button,textarea,object,figure,figcaption {margin:0;padding:0;}
+html, body{width:100%;}
+/*html{-webkit-touch-callout:none; -webkit-user-select:none; -webkit-tap-highlight-color:rgba(0, 0, 0, 0);}*/
+body{width:100%; background:#fff; min-width:320px; -webkit-text-size-adjust:none;word-wrap:break-word;word-break:break-all;}
+body,input,select,textarea,button {border:none; font-size:14px; color:#222;}
+ul,ol,li{list-style:none;}
+table{width:100%;border-spacing:0;border-collapse:collapse;}
+img,fieldset{border:0;}
+address,cite,code,em{font-style:normal;font-weight:normal;}
+em {font-style:normal;font-weight:bold;}
+label,img,input,select,textarea,button{vertical-align:middle;}
+.hide,caption,legend{line-height:0;font-size:1px;overflow:hidden;}
+hr{display:none;}
+main,header,section,nav,footer,aside,article,figure{display:block;}
+a{color:#000; text-decoration:none;}
+a:hover {text-decoration:none;}
+/* Form */
+textarea {font-family: 'Noto Sans','맑은고딕', 'Malgun Gothic', 'dotum', 'gulim'; width:calc(100% - 20px); padding:10px; font-size:14px; background:#ecf0ee; border:1px solid #ccd8d2; _color:#395144;}
+select {font-family: 'Noto Sans','맑은고딕', 'Malgun Gothic', 'dotum', 'gulim'; height:40px; font-size:14px; background:#ecf0ee; border:1px solid #ccd8d2; color:#395144;}
+input {font-family: 'Noto Sans','맑은고딕', 'Malgun Gothic', 'dotum', 'gulim';}
+input[type=tel],
+input[type=time],
+input[type=text],
+input[type=password],
+input[type=search],
+input[type=email],
+input[type=url],
+input[type=number],
+input[type=date],input[type=month] {width:calc(100% - 20px); height:40px; font-size:14px; background:#ecf0ee; border:1px solid #ccd8d2; color:#395144; vertical-align:middle;  appearance: none;
+    -moz-appearance: none;
+-webkit-appearance: none;}
+input::-webkit-input-placeholder{_color:#b5b5b5; font-size:14px; line-height:100%;}
+select:focus,
+textarea:focus,
+input:focus {border: 1px solid #1c5c4c;}
+input[type=tel][readonly],
+input[type=text][readonly],
+input[type=password][readonly],
+input[type=email][readonly],
+input[type=search][readonly],
+input[type=tel][disabled],
+input[type=text][disabled],
+input[type=password][disabled],
+input[type=search][disabled],
+input[type=email][disabled]{width:calc(100% - 20px); padding:0 10px; background:#f1f0ed; border-color:#f1f0ed; color:#716e64; -webkit-appearance:none; font-size:14px;}
+textarea[readonly],
+textarea[disabled]{width:calc(100% - 22px); padding:10px; font-size:14px; background:#f1f0ed; border-color:#f1f0ed; color:#716e64; font-weight:normal; line-height:140%;}
+
+button {cursor:pointer; border-radius:2px; letter-spacing:-1.5px;}
+
+.clear {clear:both;}
+.clear:after { content:""; display:block; clear:both;}

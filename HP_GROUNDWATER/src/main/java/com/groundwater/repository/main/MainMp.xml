@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http#{//mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--
+ - [메인 Mapper XML]
+ -   
+ - 관리책임 : 김병철
+ - 변경이력 (작성일자 / 작성자 / 요청자 / 내용) :
+ -     1. 2019-09-18 / 김병철 / 한국레미콘공업협동조합연합회 / 최초작성 
+ -->
+ <mapper namespace="com.groundwater.repository.main.MainMp">
+ 	 <!--
+	  - [공지사항 Select]  
+	  -->
+	<resultMap id="resultMap" type="hashmap" />
+    <select id="getUserProjectInfo" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call Usp_Wall_Project_Info_01_M 
+	    		(
+	    			#{list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=resultMap},
+	    			#{pjtNo},
+		    		#{memberMobile, jdbcType=VARCHAR}
+				)
+			}
+		]]>			    
+    </select>
+    
+     <select id="getProjectInfo" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call Usp_Wall_Site_Info_First_M 
+	    		(
+	    			#{list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=resultMap},
+	    			#{pjtNo, jdbcType=VARCHAR},
+		    		#{searchText, jdbcType=VARCHAR}
+				)
+			}
+		]]>			    
+    </select>
+</mapper>

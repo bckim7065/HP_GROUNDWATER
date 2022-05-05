@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http#{//mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--
+ - [메인 Mapper XML]
+ -   
+ - 관리책임 : 김병철
+ - 변경이력 (작성일자 / 작성자 / 요청자 / 내용) :
+ -     1. 2019-09-18 / 김병철 / 한국레미콘공업협동조합연합회 / 최초작성 
+ -->
+ <mapper namespace="com.groundwater.repository.contents.ContentsMp">
+ 	 <!--
+	  - [공지사항 Select]  
+	  -->
+	<resultMap id="contentsResultMap" type="hashmap" />
+    <select id="getListMain" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call Usp_Wall_Site_Info_Detail_ALL_M 
+	    		(
+	    			#{list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=contentsResultMap},
+	    			#{pjtNo, jdbcType=VARCHAR},
+		    		#{siteNo, jdbcType=VARCHAR}
+				)
+			}
+		]]>			    
+    </select>
+    
+     <select id="getListPurPose" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call WALL_SPCC_GET_CODENAME 
+	    		(
+	    			#{list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=resultMap},
+	    			#{dvsCd, jdbcType=VARCHAR},
+		    		#{kind, jdbcType=VARCHAR}
+				)
+			}
+		]]>			    
+    </select>
+    
+  	<select id="getSpccCodeName" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call WALL_SPCC_GET_CODENAME 
+	    		(
+	    			#{list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=resultMap},
+	    			#{dvsCd, jdbcType=VARCHAR},
+	    			#{kind, jdbcType=VARCHAR},
+		    		#{code, jdbcType=VARCHAR},
+		    		#{upCode, jdbcType=VARCHAR}
+				)
+			}
+		]]>			    
+    </select>
+    
+    <update id="saveData" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call Usp_Wall_Site_Info_Detail_All_M_Up 
+				( 
+				    #{pjtNo, jdbcType=VARCHAR},                
+				    #{siteNo, jdbcType=VARCHAR},               
+				    To_Char(Trunc(Sysdate), 'YYYYMMDD'),           
+				    #{SS_M_USER_ID},              
+				    #{SS_M_USER_NM},              
+				    #{WL_ADDR_01_MOD, jdbcType=VARCHAR},        
+				    #{WL_ADDR_02_MOD, jdbcType=VARCHAR},        
+				    #{WL_ADDR_03_MOD, jdbcType=VARCHAR},        
+				    #{WL_ADDR_04_MOD, jdbcType=VARCHAR},        
+				    #{WL_LOG, jdbcType=VARCHAR},                
+				    #{WL_LAG, jdbcType=VARCHAR},                
+				    #{WM_PURPOSE_MOD, jdbcType=VARCHAR},        
+				    #{WM_PURPOSE_DETAIL_MOD, jdbcType=VARCHAR}, 
+				    #{WM_PURPOSE_USE, jdbcType=VARCHAR},        
+				    #{WM_STATUS, jdbcType=VARCHAR},             
+				    #{WM_STATUS_DETAIL, jdbcType=VARCHAR},      
+				    #{WL_OWNER_NM, jdbcType=VARCHAR},           
+				    #{WL_OWNER_MOBILE, jdbcType=VARCHAR},       
+				    #{WL_OWNER_ADDR_01, jdbcType=VARCHAR},      
+				    #{WL_OWNER_ADDR_02, jdbcType=VARCHAR},      
+				    #{WL_OWNER_ADDR_03, jdbcType=VARCHAR},      
+				    #{WL_OWNER_ADDR_04, jdbcType=VARCHAR},      
+				    #{WL_USER_NM, jdbcType=VARCHAR},            
+				    #{WL_USER_MOBILE, jdbcType=VARCHAR},        
+				    #{WL_USER_ADDR_01, jdbcType=VARCHAR},       
+				    #{WL_USER_ADDR_02, jdbcType=VARCHAR},       
+				    #{WL_USER_ADDR_03, jdbcType=VARCHAR},       
+				    #{WL_USER_ADDR_04, jdbcType=VARCHAR},       
+				    #{WU_SHAPE, jdbcType=VARCHAR},                
+				    #{WU_COMPL_YEAR, jdbcType=VARCHAR},         
+				    #{WU_COMPL_YEAR_MOD, jdbcType=VARCHAR},     
+				    #{WU_DEPTH_MOD, jdbcType=VARCHAR},          
+				    #{WU_INNER_CASING_MOD, jdbcType=VARCHAR},   
+				    #{WU_OUT_CASING_MOD, jdbcType=VARCHAR},     
+				    #{PI_KIND_MOD, jdbcType=VARCHAR},           
+				    #{PI_HP_MOD, jdbcType=VARCHAR},             
+				    #{PI_DCP_MOD, jdbcType=VARCHAR},            
+				    #{PI_FLUX, jdbcType=VARCHAR},               
+				    #{PI_WLC, jdbcType=VARCHAR},                
+				    #{PI_FE, jdbcType=VARCHAR},                 
+				    #{PI_CB, jdbcType=VARCHAR},                 
+				    #{PI_CV, jdbcType=VARCHAR},                 
+				    #{HG_DR, jdbcType=VARCHAR},                 
+				    #{HG_PC, jdbcType=VARCHAR},                 
+				    #{HG_TC, jdbcType=VARCHAR},                 
+				    #{HG_SC, jdbcType=VARCHAR},                 
+				    #{CL_CS, jdbcType=VARCHAR},                 
+				    #{CL_UD, jdbcType=VARCHAR},                 
+				    #{CL_UDF, jdbcType=VARCHAR},                
+				    #{CL_GT, jdbcType=VARCHAR},                 
+				    #{CL_FC, jdbcType=VARCHAR},                 
+				    #{CL_FC_ETC, jdbcType=VARCHAR},             
+				    #{CL_CI, jdbcType=VARCHAR},                 
+				    #{CL_GC, jdbcType=VARCHAR},                 
+				    #{CL_GL, jdbcType=VARCHAR},                 
+				    #{CL_SWL, jdbcType=VARCHAR},                
+				    #{CL_RU, jdbcType=VARCHAR},                 
+				    #{CL_WPC, jdbcType=VARCHAR},                
+				    #{CL_DCPC, jdbcType=VARCHAR},               
+				    #{CL_FMC, jdbcType=VARCHAR},                
+				    #{CL_EWC, jdbcType=VARCHAR},                
+				    #{CL_WLCC, jdbcType=VARCHAR},               
+				    #{CL_FEC, jdbcType=VARCHAR},                
+				    #{CL_CBC, jdbcType=VARCHAR},                
+				    #{CL_ECC, jdbcType=VARCHAR},                
+				    #{CL_PLC, jdbcType=VARCHAR},                
+				    #{CL_RE_PLM, jdbcType=VARCHAR},             
+				    #{CL_RE_IMP, jdbcType=VARCHAR},             
+				    #{CL_RE_SF, jdbcType=VARCHAR},              
+				    #{SS_OS, jdbcType=VARCHAR},                 
+				    #{SS_OS_DISC, jdbcType=VARCHAR},            
+				    #{SS_SP, jdbcType=VARCHAR},                 
+				    #{SS_SPD, jdbcType=VARCHAR},                
+				    #{SS_PU, jdbcType=VARCHAR},                 
+				    #{SS_PU_DISC, jdbcType=VARCHAR},            
+				    #{SS_FMO, jdbcType=VARCHAR},                
+				    #{SS_FMO_DISC, jdbcType=VARCHAR},           
+				    #{SS_DC, jdbcType=VARCHAR},                 
+				    #{SS_DC_DISC, jdbcType=VARCHAR},            
+				    #{SS_SM, jdbcType=VARCHAR},                 
+				    #{SS_SM_DISC, jdbcType=VARCHAR},            
+				    #{SS_ME, jdbcType=VARCHAR},                 
+				    #{SS_ME_DISC, jdbcType=VARCHAR},            
+				    #{WQ_PL, jdbcType=VARCHAR},                 
+				    #{WQ_ETC, jdbcType=VARCHAR},                
+				    #{ET_D_HIS_EXIST, jdbcType=VARCHAR},        
+				    #{ET_D_HIS, jdbcType=VARCHAR},              
+				    #{ET_WSH, jdbcType=VARCHAR},                
+				    #{ET_WSP, jdbcType=VARCHAR},                
+				    #{ET_WSA, jdbcType=VARCHAR},                
+				    #{ET_RO, jdbcType=VARCHAR},                 
+				    #{ET_WSF, jdbcType=VARCHAR},                
+				    #{WT_EXIST, jdbcType=VARCHAR},              
+				    #{WT_ADDR_01, jdbcType=VARCHAR},            
+				    #{WT_ADDR_02, jdbcType=VARCHAR},            
+				    #{WT_ADDR_03, jdbcType=VARCHAR},            
+				    #{WT_ADDR_04, jdbcType=VARCHAR},            
+				    #{WT_LOG, jdbcType=VARCHAR},                
+				    #{WT_LAG, jdbcType=VARCHAR},                
+				    #{WT_CP, jdbcType=VARCHAR},                 
+				    #{WT_MT, jdbcType=VARCHAR},                 
+				    #{WT_MANAGER, jdbcType=VARCHAR},            
+				    #{WT_MOBILE, jdbcType=VARCHAR},             
+				    #{WT_DISTANCE, jdbcType=VARCHAR},           
+				    #{WP_INSTALLED, jdbcType=VARCHAR},          
+				    #{WP_MS, jdbcType=VARCHAR},                 
+				    #{WP_PFM, jdbcType=VARCHAR}                    
+				)
+			}
+		]]>			    
+    </update>
+    
+     <update id="savePop" parameterType="Map" statementType="CALLABLE">
+    	<![CDATA[
+    		{
+	    		call Usp_Wall_Site_Info_Detail_All_Pop_M_Up   
+				( 
+				    #{pjtNo, jdbcType=VARCHAR},                
+				    #{siteNo, jdbcType=VARCHAR},               
+				    #{INVEST_DATE, jdbcType=VARCHAR}, 
+				    #{SS_M_USER_ID, jdbcType=VARCHAR},
+				    #{SS_M_USER_NM, jdbcType=VARCHAR},
+				    #{ETC_01, jdbcType=VARCHAR}                 
+				)
+			}
+		]]>			    
+    </update>
+    
+    <select id="getEditStatus" parameterType="Map" resultType="Map">
+    	<![CDATA[
+    		Select
+			    *
+			From
+			    WALL_SITE_INFO_01
+			Where PJT_NO = #{pjtNo}
+			And SITE_NO = #{siteNo}
+		]]>			    
+    </select>
+    
+    <select id="getPhotoMain" parameterType="Map" resultType="Map">
+    	<![CDATA[
+    		Select 
+			    * 
+			From    
+			    PHOTO_INFO
+			Where PJT_NO = #{pjtNo}
+			And SITE_NO = #{siteNo}
+			Order By
+			    PT_KIND
+		]]>			    
+    </select>
+    
+    
+    <insert id="saveFile" parameterType="Map">
+    	<![CDATA[
+    		Insert Into PHOTO_INFO
+			(
+			    PJT_NO, 
+			    SITE_NO, 
+			    PT_KIND, 
+			    PT_STORED_NM, 
+			    PT_REG_DT, 
+			    PT_LOCAT
+			)
+			Values
+			(
+			    #{pjtNo}, 
+			    #{siteNo}, 
+			    #{PT_KIND}, 
+			    #{PT_STORED_NM}, 
+			    To_Char(Trunc(Sysdate), 'YYYYMMDD'), 
+			    #{PT_LOCAT}
+			)
+		]]>			    
+    </insert>
+    
+    <delete id="deleteFile" parameterType="Map">
+    	<![CDATA[
+    		Delete
+			From    
+			    PHOTO_INFO
+			Where PJT_NO = #{pjtNo}
+			And SITE_NO = #{siteNo}
+			And PT_KIND = #{PT_KIND}
+		]]>			    
+    </delete>
+</mapper>

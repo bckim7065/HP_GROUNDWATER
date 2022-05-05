@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http#{//mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--
+ - [로그인 Mapper XML]
+ -   
+ - 관리책임 : 김병철
+ - 변경이력 (작성일자 / 작성자 / 요청자 / 내용) :
+ -     1. 2021-03-14 / 김병철 / - / 최초작성 
+ -->
+ <mapper namespace="com.groundwater.repository.login.LoginServiceMp">
+ 	 <!--
+	  - [로그인체크 Select]  
+	  -->
+    <select id="checkLogin" resultType="Map">
+    	<![CDATA[
+    		Select
+			    *
+			From
+			    MEMBER_INVEST
+			Where MEMBER_MOBILE = #{mobileNumber}
+		]]>			    
+    </select>
+</mapper>

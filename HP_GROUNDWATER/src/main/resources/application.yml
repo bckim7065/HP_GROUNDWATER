@@ -1,0 +1,47 @@
+server:
+  port: 8100
+  servlet:
+    -context-path: /   
+    -session:
+      :timeout: 1800
+  error:
+    whitelabel:
+      enabled: false
+    include-exception: true # 오류 응답에 excpetion 내용 여부
+    include-stacktrace: always # 오류 응답에 stacktrace 내용 여부
+
+spring:     
+  profiles:
+    active: none     
+  devtools:         
+    restart:
+      enabled: true
+    livereload:
+      enabled: true                              
+  mvc:  
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+    log-resolved-exception: false    
+  h2:
+    console:
+      enabled: true
+  datasource:
+    #driver-class-name: oracle.jdbc.OracleDriver
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:ORCL
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:ORCL
+    username: KECO_USER
+    password: KECO_USER
+  servlet:
+    multipart:
+     max-file-size: 100MB
+     max-request-size: 100MB
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.groundwater.model
+
+file:
+  uploadBase: C:\file\groundwater\ 
+    
